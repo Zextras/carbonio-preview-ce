@@ -50,7 +50,7 @@ pipeline {
                                 dir('/tmp/staging'){
                                     unstash 'binaries'
                                 }
-                                sh 'sudo pacur build ubuntu /tmp/staging/'
+                                sh 'sudo pacur build ubuntu /tmp/staging/package'
                                 stash includes: 'artifacts/', name: 'artifacts-deb'
                             }
                             post {
@@ -69,7 +69,7 @@ pipeline {
                                 dir('/tmp/staging'){
                                     unstash 'binaries'
                                 }
-                                sh 'sudo pacur build centos /tmp/staging/'
+                                sh 'sudo pacur build centos /tmp/staging/package'
                                 dir('artifacts/') {
                                     sh 'echo carbonio-preview-ce* | sed -E "s#(carbonio-preview-ce-[0-9.]*).*#\\0 \\1.x86_64.rpm#" | xargs sudo mv'
                                 }
