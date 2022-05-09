@@ -15,6 +15,5 @@
 # and it can only be specified with a config file.
 
 # cd could be avoided but we do it nonetheless
-
-export JAVA_HOME=/opt/zextras/common/lib/jvm/java
-cd /usr/bin/carbonio/preview/ && gunicorn controller:app --config gunicorn.conf.py
+PYTHONPATH=/opt/zextras/common/lib/python3.8/site-packages \
+  /opt/zextras/common/bin/gunicorn controller:app --config gunicorn.conf.py
