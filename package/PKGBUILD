@@ -42,6 +42,8 @@ depends:yum=(
     "libreoffice-draw"
     "libreoffice-impress"
     "libreoffice-calc"
+    "gpgmepp"
+    "lcms2"
 )
 sources=(
    "carbonio-preview-ce.tar.gz"
