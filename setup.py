@@ -13,11 +13,10 @@ this_directory = path.abspath(path.dirname(__file__))
 with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
     long_description = f.read()
 
-
 setup(
     name="carbonio-preview-ce",
     packages=find_packages(),
-    version="0.2.5",
+    version="0.2.9",
     entry_points={"console_scripts": ["controller = controller:main"]},
     description="Carbonio Preview.",
     long_description=open("README.md").read(),
@@ -25,6 +24,7 @@ setup(
     url="https://github.com/zextras/carbonio-preview-ce/",
     download_url="https://github.com/zextras/carbonio-preview-ce/archive/master.zip",
     keywords=["carbonio", "preview", "storage"],
+    requires_python=">=3.7",
     classifiers=[
         "Programming Language :: Python :: 3",
         "Topic :: Software Development :: Embedded Systems",
