@@ -16,12 +16,20 @@ priority="optional"
 arch="all"
 license=("AGPL-3.0-only")
 
-depends=(
+depends:apt=(
   "carbonio-docs-core"
   "pending-setups"
   "python3"
   "service-discover"
 )
+
+depends:yum=(
+  "carbonio-docs-core"
+  "pending-setups"
+  "python38"
+  "service-discover"
+)
+
 makedepends=(
   "python3-pip"
 )
