@@ -24,7 +24,6 @@ setup(
     url="https://github.com/zextras/carbonio-preview-ce/",
     download_url="https://github.com/zextras/carbonio-preview-ce/archive/master.zip",
     keywords=["carbonio", "preview", "storage"],
-    requires_python=">=3.7",
     classifiers=[
         "Programming Language :: Python :: 3",
         "Topic :: Software Development :: Embedded Systems",

@@ -30,8 +30,12 @@ depends:yum=(
   "service-discover"
 )
 
-makedepends=(
-  "python3-pip"
+makedepends:yum=(
+  "python38-pip"
+)
+
+makedepends:apt=(
+  "python3.8-pip"
 )
 sources=(
   "carbonio-preview.service"
