@@ -1,5 +1,4 @@
 # SPDX-FileCopyrightText: 2022 Zextras <https://www.zextras.com
-# SPDX-FileCopyrightText: 2022 Zextras <https://www.zextras.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-only
 
@@ -42,9 +41,9 @@ async def retrieve_data(
         response = s.get(req, timeout=60)
         response.raise_for_status()
     except requests.exceptions.HTTPError as http_error:
-        log.error(f"Http Error: {http_error}")
+        log.debug(f"Http Error: {http_error}")
     except requests.exceptions.ConnectionError as connection_error:
-        log.error(f"Connection Error: {connection_error}")
+        log.debug(f"Connection Error: {connection_error}")
     # from this onward are not related to the raise_for_status,
     # these are all critical errors.
     except requests.exceptions.Timeout as timeout_error:

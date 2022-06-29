@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 # -*- encoding: utf-8 -*-
 
+# SPDX-FileCopyrightText: 2022 Zextras <https://www.zextras.com
+#
+# SPDX-License-Identifier: AGPL-3.0-only
+
 from os import path
 
 from setuptools import find_packages, setup

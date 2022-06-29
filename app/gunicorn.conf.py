@@ -1,5 +1,4 @@
 # SPDX-FileCopyrightText: 2022 Zextras <https://www.zextras.com
-# SPDX-FileCopyrightText: 2022 Zextras <https://www.zextras.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-only
 import os
@@ -76,7 +75,7 @@ backlog = 2048
 workers = NUMBER_OF_WORKERS
 worker_class = "uvicorn.workers.UvicornWorker"
 worker_connections = 1000
-timeout = 30
+timeout = service.TIMEOUT
 keepalive = 2
 
 #
@@ -174,10 +173,12 @@ LOGGING_CONFIG = {
             "formatter": "syslog",
         },
         "file_standard": {
-            "class": "logging.handlers.RotatingFileHandler",
+            "class": "logging.handlers.TimedRotatingFileHandler",
             "filename": log_path,
             "formatter": "syslog",
             "encoding": "utf8",
+            "when": "d",
+            "backupCount": 50,
         },
         "console_gunicorn": {
             "class": "logging.StreamHandler",
@@ -185,10 +186,12 @@ LOGGING_CONFIG = {
             "formatter": "syslog",
         },
         "file_gunicorn": {
-            "class": "logging.handlers.RotatingFileHandler",
+            "class": "logging.handlers.TimedRotatingFileHandler",
             "filename": log_path,
             "formatter": "syslog",
             "encoding": "utf8",
+            "when": "d",
+            "backupCount": 50,
         },
     },
     "formatters": {
@@ -234,6 +237,14 @@ proc_name = "carbonio-preview-manager"
 
 def child_exit(server, worker):
     server.log.info(f"Worker killed: {worker.pid}")
+
+
+def post_worker_init(worker):
+    worker.log.info("Post worker init")
+    # import here, otherwise logs won't be configured correctly
+    from app.core.resources.libre_office_handler import init_signals
+
+    init_signals()
 
 
 def pre_exec(server):
